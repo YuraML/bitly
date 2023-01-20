@@ -40,7 +40,7 @@ def main():
     )
     parser.add_argument('user_link', help='Ваша ссылка')
     args = parser.parse_args()
-    token = os.getenv("BITLY_TOKEN")
+    token = os.environ['BITLY_TOKEN']
     parsed_link = urlparse(args.user_link)
     cut_link = f'{parsed_link.netloc}{parsed_link.path}'
     try:
