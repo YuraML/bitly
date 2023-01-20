@@ -34,6 +34,7 @@ def is_bitlink(token, cut_link):
 
 
 def main():
+    load_dotenv()
     parser = argparse.ArgumentParser(
         description='Введите ссылку'
     )
@@ -55,5 +56,4 @@ def main():
 
 
 if __name__ == "__main__":
-    load_dotenv()
     main()
