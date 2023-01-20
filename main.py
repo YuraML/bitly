@@ -40,16 +40,15 @@ def main():
     )
     parser.add_argument('user_link', help='Ваша ссылка')
     args = parser.parse_args()
-    user_link = args.user_link
     token = os.getenv("BITLY_TOKEN")
-    parsed_link = urlparse(user_link)
+    parsed_link = urlparse(args.user_link)
     cut_link = f'{parsed_link.netloc}{parsed_link.path}'
     try:
         if is_bitlink(token, cut_link):
             clicks_count = count_clicks(token, cut_link)
             print('Количество кликов:', clicks_count)
         else:
-            bitlink = shorten_link(token, user_link)
+            bitlink = shorten_link(token, args.user_link)
             print('Битлинк', bitlink)
     except requests.exceptions.HTTPError:
         print('Вы ввели неправильную ссылку или неверный токен.')
